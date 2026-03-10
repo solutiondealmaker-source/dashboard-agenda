@@ -329,7 +329,6 @@ function SettingsView({ calendars, setCalendars }) {
  const [fetchedCals] = useState([]);
   const [selected, setSelected] = useState({});
   const [colorMap, setColorMap] = useState({});
- const [error] = useState(null);
 
   // Simule la liste des agendas retournée par Google après OAuth
   // En prod : remplacer par l'appel réel à l'API Google Calendar via Netlify Function
@@ -502,7 +501,6 @@ export default function App() {
   const [current, setCurrent] = useState(new Date());
   const [calendars, setCalendars] = useState(MOCK_CALENDARS);
   const [events] = useState(MOCK_EVENTS);
-  const connected = false;
 
   return (
     <div style={{ minHeight: "100vh", background: "#0a0a14", color: "#fff", fontFamily: "'Inter', sans-serif", padding: 0 }}>
