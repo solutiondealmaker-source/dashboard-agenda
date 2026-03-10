@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 const CALENDAR_COLORS = [
@@ -418,7 +418,7 @@ const TABS = [
 
 // ─── APP ──────────────────────────────────────────────────────────────────────
 // NOTE: React doit être importé pour JSX dans certains configs
-import React from "react";
+
 
 export default function App() {
   const [tab, setTab] = useState("settings");
