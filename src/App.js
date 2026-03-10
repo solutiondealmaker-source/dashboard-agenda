@@ -326,22 +326,14 @@ function GanttView() {
 
 function SettingsView({ calendars, setCalendars }) {
   const [step, setStep] = useState("idle"); // idle | connecting | picking | done
-  const [fetchedCals, setFetchedCals] = useState([]);
+ const [fetchedCals] = useState([]);
   const [selected, setSelected] = useState({});
   const [colorMap, setColorMap] = useState({});
-  const [, setError] = useState(null);
+ const [error] = useState(null);
 
   // Simule la liste des agendas retournée par Google après OAuth
   // En prod : remplacer par l'appel réel à l'API Google Calendar via Netlify Function
-  function simulateFetchCalendars() {
-    return [
-      { id: "jonathan.perso@gmail.com", summary: "Perso", backgroundColor: "#4F8EF7" },
-      { id: "jonathan.pro@gmail.com", summary: "Pro", backgroundColor: "#F76A4F" },
-      { id: "academy@gmail.com", summary: "Academy", backgroundColor: "#4FD18B" },
-      { id: "clients@gmail.com", summary: "Clients", backgroundColor: "#F7C84F" },
-      { id: "famille@gmail.com", summary: "Famille", backgroundColor: "#B44FF7" },
-    ];
-  }
+  
 
   function handleConnect() {
   setStep("connecting");
@@ -510,7 +502,7 @@ export default function App() {
   const [current, setCurrent] = useState(new Date());
   const [calendars, setCalendars] = useState(MOCK_CALENDARS);
   const [events] = useState(MOCK_EVENTS);
-  const [connected] = useState(false);
+  const connected = false;
 
   return (
     <div style={{ minHeight: "100vh", background: "#0a0a14", color: "#fff", fontFamily: "'Inter', sans-serif", padding: 0 }}>
