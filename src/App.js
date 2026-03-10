@@ -344,21 +344,9 @@ function SettingsView({ calendars, setCalendars }) {
   }
 
   function handleConnect() {
-    setStep("connecting");
-    setError(null);
-    // En prod : ouvrir la popup OAuth Google ici
-    // window.open(`https://accounts.google.com/o/oauth2/v2/auth?client_id=${OAUTH_CLIENT_ID}&...`)
-    setTimeout(() => {
-      const cals = simulateFetchCalendars();
-      setFetchedCals(cals);
-      const sel = {};
-      const col = {};
-      cals.forEach(c => { sel[c.id] = true; col[c.id] = c.backgroundColor; });
-      setSelected(sel);
-      setColorMap(col);
-      setStep("picking");
-    }, 1200);
-  }
+  setStep("connecting");
+  window.location.href = "/.netlify/functions/google-auth";
+}
 
   function handleSave() {
     const chosen = fetchedCals
@@ -533,11 +521,6 @@ export default function App() {
           <span style={{ color: "#fff", fontWeight: 700, fontSize: 18 }}>Dashboard Agenda</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          {!connected && (
-            <div style={{ background: "#F7C84F22", border: "1px solid #F7C84F55", borderRadius: 8, padding: "4px 12px", fontSize: 12, color: "#F7C84F" }}>
-              ⚠ Mode démo — Connecte Google Calendar via l'intégration OAuth de Base44
-            </div>
-          )}
         </div>
       </div>
 
