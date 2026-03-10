@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 const CALENDAR_COLORS = [
@@ -38,8 +38,7 @@ function formatTime(dateStr) {
 
 // ─── GOOGLE API ───────────────────────────────────────────────────────────────
 // NOTE: Remplace CLIENT_ID par ton propre OAuth2 Client ID Google
-const CLIENT_ID = "VOTRE_CLIENT_ID_GOOGLE.apps.googleusercontent.com";
-const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+
 
 // ─── MOCK DATA (affichée si pas connecté) ─────────────────────────────────────
 const today = new Date();
@@ -323,15 +322,14 @@ function GanttView() {
 }
 
 // ─── VUE PARAMÈTRES ───────────────────────────────────────────────────────────
-const OAUTH_SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
-const OAUTH_CLIENT_ID = "VOTRE_CLIENT_ID.apps.googleusercontent.com"; // à remplacer
+
 
 function SettingsView({ calendars, setCalendars }) {
   const [step, setStep] = useState("idle"); // idle | connecting | picking | done
   const [fetchedCals, setFetchedCals] = useState([]);
   const [selected, setSelected] = useState({});
   const [colorMap, setColorMap] = useState({});
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
 
   // Simule la liste des agendas retournée par Google après OAuth
   // En prod : remplacer par l'appel réel à l'API Google Calendar via Netlify Function
